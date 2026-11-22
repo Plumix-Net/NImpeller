@@ -1,3 +1,8 @@
+> **Plumix fork.** This is [Plumix-Net/NImpeller](https://github.com/Plumix-Net/NImpeller), a fork of
+> [AvaloniaUI/NImpeller](https://github.com/AvaloniaUI/NImpeller) that publishes the same bindings as
+> `Plumix.NImpeller` and `Plumix.NImpeller.Native.*` for [Plumix](https://plumix.net) until upstream releases
+> packages with the API Plumix needs. Fixes that are not Plumix-specific go upstream as pull requests.
+
 # NImpeller - .NET Bindings for Impeller
 
 NImpeller are .NET Bindings for [Impeller](https://github.com/flutter/flutter/tree/master/engine/src/flutter/impeller), the rendering runtime for Flutter.

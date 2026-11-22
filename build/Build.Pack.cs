@@ -28,11 +28,15 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 // Generated/Bindings.g.cs are left alone. Packages land in artifacts/packages/.
 partial class Build
 {
-    const string RepositoryUrl = "https://github.com/AvaloniaUI/NImpeller";
-    const string PackageAuthors = "AvaloniaUI OÜ";
+    // Plumix-Net/NImpeller: the same packages under Plumix's ids, built from this fork. The assembly stays
+    // NImpeller.dll (namespace NImpeller, upstream's strong name), so switching to upstream's packages is a
+    // package reference change.
+    const string RepositoryUrl = "https://github.com/Plumix-Net/NImpeller";
+    const string UpstreamUrl = "https://github.com/AvaloniaUI/NImpeller";
+    const string PackageAuthors = "AvaloniaUI OÜ, Plumix contributors";
     const string PackageCopyright = "Copyright (c) AvaloniaUI OÜ All Rights Reserved";
-    const string ManagedPackageId = "NImpeller";
-    const string NativeMetaPackageId = "NImpeller.Native";
+    const string ManagedPackageId = "Plumix.NImpeller";
+    const string NativeMetaPackageId = "Plumix.NImpeller.Native";
 
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
     AbsolutePath PackagesDirectory => ArtifactsDirectory / "packages";
@@ -308,7 +312,12 @@ partial class Build
             builder.DependencyGroups.Add(new PackageDependencyGroup(NuGetFramework.Parse("net10.0"),
                 new[] { new PackageDependency(NativeMetaPackageId, exact) }));
             AddReadme(builder, staging, ManagedPackageId, $"""
-                # NImpeller
+                # {ManagedPackageId}
+
+                [NImpeller]({UpstreamUrl}) — .NET bindings for Flutter's Impeller — packaged by
+                [Plumix](https://plumix.net) from its fork [Plumix-Net/NImpeller]({RepositoryUrl}), for an API
+                upstream has not released yet. The assembly is `NImpeller.dll` with the `NImpeller` namespace,
+                so code builds unchanged against either package; reference one of them, not both.
 
                 {OriginTable(pin)}
                 """);
